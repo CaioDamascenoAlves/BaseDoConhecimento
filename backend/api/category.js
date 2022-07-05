@@ -1,7 +1,7 @@
 module.exports = app => {
-	const { existsOrError, notExistsOrError } = app.api.validation
+    const { existsOrError, notExistsOrError } = app.api.validation
 
-	const save = (req, res) => {
+    const save = (req, res) => {
         const category = {
             id: req.body.id,
             name: req.body.name,
@@ -93,7 +93,7 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
-	const toTree = (categories, tree) => {
+    const toTree = (categories, tree) => {
         if(!tree) tree = categories.filter(c => !c.parentId)
         tree = tree.map(parentNode => {
             const isChild = node => node.parentId == parentNode.id
@@ -104,11 +104,10 @@ module.exports = app => {
     }
 
     const getTree = (req, res) => {
-        app.db('categories') 
+        app.db('categories')
             .then(categories => res.json(toTree(categories)))
             .catch(err => res.status(500).send(err))
     }
 
-	return { save, remove, get, getById, getTree }
-
+    return { save, remove, get, getById, getTree }
 }

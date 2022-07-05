@@ -4,7 +4,7 @@
 
 <script>
 import { mapState } from 'vuex'
-
+//'mongodb://localhost/base_do_conhecimento_stats'
 export default {
 	name: 'Menu',
 	computed: mapState(['isMenuVisible'])
